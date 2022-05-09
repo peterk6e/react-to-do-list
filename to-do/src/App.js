@@ -15,13 +15,23 @@ class App extends Component {
     ],
   };
 
+  removeTask = (index) => {
+    const { tasks } = this.state;
+
+    this.setState({
+      tasks: tasks.filter((task, i) => {
+        return i !== index;
+      }),
+    });
+  };
+
   render() {
-    const {tasks} = this.state;
+    const { tasks } = this.state;
 
     return (
       <div className="container">
         <h1>To Do</h1>
-        <Table tasks={tasks} />
+        <Table tasks={tasks} removeTask={this.removeTask} />
       </div>
     );
   }

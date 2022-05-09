@@ -1,9 +1,9 @@
 const Table = (props) => {
-  const { tasks } = props;
+  const { tasks, removeTask } = props;
   return (
     <table>
       <TableHeader />
-      <TableBody tasks={tasks} />
+      <TableBody tasks={tasks} removeTask={removeTask} />
     </table>
   );
 };
@@ -27,7 +27,13 @@ const TableBody = (props) => {
         <td>{task.task}</td>
         <td>{task.status ? "done" : "pending..."}</td>
         <td>
-          <input type="button" value="Delete" />
+          <input
+            type="button"
+            value="Delete"
+            onClick={() => {
+              props.removeTask(index);
+            }}
+          />
         </td>
       </tr>
     );

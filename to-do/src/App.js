@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Table from "./Table";
+import Form from "./Form";
 
 class App extends Component {
   state = {
@@ -32,6 +33,7 @@ class App extends Component {
       <div className="container">
         <h1>To Do</h1>
         <Table tasks={tasks} removeTask={this.removeTask} />
+        <Form />
       </div>
     );
   }

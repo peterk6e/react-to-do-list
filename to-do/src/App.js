@@ -33,13 +33,25 @@ class App extends Component {
     });
   };
 
+  handleCheck = (index) => {
+    const { tasks } = this.state;
+    tasks[index].status = !tasks[index].status 
+    this.setState({
+      tasks: tasks
+    })
+  };
+
   render() {
     const { tasks } = this.state;
 
     return (
       <div className="container">
         <h1>To Do</h1>
-        <Table tasks={tasks} removeTask={this.removeTask} />
+        <Table
+          tasks={tasks}
+          removeTask={this.removeTask}
+          handleCheck={this.handleCheck}
+        />
         <Form handleSubmit={this.handleSubmit} />
       </div>
     );

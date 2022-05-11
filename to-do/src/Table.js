@@ -1,9 +1,13 @@
 const Table = (props) => {
-  const { tasks, removeTask } = props;
+  const { tasks, removeTask, handleCheck } = props;
   return (
     <table>
       <TableHeader />
-      <TableBody tasks={tasks} removeTask={removeTask} />
+      <TableBody
+        tasks={tasks}
+        removeTask={removeTask}
+        handleCheck={handleCheck}
+      />
     </table>
   );
 };
@@ -24,8 +28,15 @@ const TableBody = (props) => {
   const rows = props.tasks.map((task, index) => {
     return (
       <tr key={index}>
-        <td>{task.task}</td>
-        <td>{task.status ? "done" : "pending..."}</td>
+        <td className={task.status ? "line-through" : ""}>{task.task}</td>
+        <td>
+          <input
+            class="checkbox"
+            type="checkbox"
+            onChange={() => props.handleCheck(index)}
+          />
+          {task.status ? "Done" : "Pending..."}
+        </td>
         <td>
           <input
             type="button"

@@ -1020,4 +1020,9 @@ caption {
   }
 }
 
-
+/**
+ * Edit
+ */
+ .line-through {
+  text-decoration: line-through;
+}

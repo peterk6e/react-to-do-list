@@ -31,8 +31,9 @@ const TableBody = (props) => {
         <td className={task.status ? "line-through" : ""}>{task.task}</td>
         <td>
           <input
-            class="checkbox"
             type="checkbox"
+            key={Math.random()} // to re-render the checkbox
+            defaultChecked={task.status}
             onChange={() => props.handleCheck(index)}
           />
           {task.status ? "Done" : "Pending..."}
